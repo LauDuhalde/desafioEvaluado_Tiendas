@@ -27,15 +27,29 @@ class Producto:
         return self
     
     def __sub__(self,other):
-        self.stock -= other.stock
-        self.stock = self.stock if self.stock > 0 else 0
-        return self
+        vendido = 0
+        if self == other:
+            if self.stock > 0:
+                nuevo_stock = self.stock - other.stock
+                if nuevo_stock < 0:
+                    vendido = self.stock #Para saber cuanto se vendió en realidad
+                    self.stock = 0
+                else:
+                    self.stock = nuevo_stock
+                    vendido = other.stock
+            else:
+                print("Producto sin stock")
+        return vendido
+
+    def __str__(self):
+        return f"{self.nombre} - ${self.precio} - Stock: {self.stock}"
+
     
 if __name__ == "__main__":
-    p1 = Producto("Pelota",1500)
+    p1 = Producto("Pelota",1500,200)
     p2 = Producto("Pelota",1500,500)
 
     if p1 == p2:
         print("Mismo producto")
-    p1 = p1 - p2
-    print (p1.stock)
+    vendido = p1 - p2
+    print (p1.stock, vendido)
