@@ -23,7 +23,8 @@ class Producto:
         return self.nombre.lower() == other.nombre.lower()
     
     def __add__(self,other):
-        self.stock += other.stock
+        if self == other:
+            self.stock += other.stock
         return self
     
     def __sub__(self,other):
@@ -38,7 +39,7 @@ class Producto:
                     self.stock = nuevo_stock
                     vendido = other.stock
             else:
-                print("Producto sin stock")
+                print(f"{self.nombre} sin stock")
         return vendido
 
     def __str__(self):
