@@ -1,5 +1,17 @@
 from tienda import Farmacia,Supermercado,Restaurante
-
+def accion(opcion):
+    if opcion_accion == 1:
+        print(tienda.listar_productos())
+    elif opcion_accion ==2:
+        print(tienda.listar_productos())
+        nombre_compra = input("Ingreses el nombre del producto que desea comprar\n")
+        cantidad = int(input("Ingrese cantidad que desea comprar\n"))
+        tienda.realizar_venta(nombre_compra, cantidad)
+    else:
+        print("Adiós")
+        exit
+        
+        
 #Se asume que se ingresarán valores correctos en los menús
 tienda = None
 print("Bienvenido")
@@ -26,7 +38,7 @@ while opcion_ingreso == 1:
     precio_producto = int(input("Indique precio\n"))
     
     if(tipo_tienda != 3):
-        stock_producto = int(input("Ingrese stock"))
+        stock_producto = int(input("Ingrese stock\n"))
         tienda.ingresar_producto(nombre_producto,precio_producto,stock_producto)
     else:
         tienda.ingresar_producto(nombre_producto,precio_producto)
@@ -36,9 +48,15 @@ while opcion_ingreso == 1:
     2. No
     '''))
     
-opcion2 = int(input('''¿Qué quieres hacer?
-1. Farmacia
-2. Supermercado
-3. Restaurante
+opcion_accion = int(input('''¿Qué quieres hacer?
+1. Listar productos
+2. Realizar una venta
+3. Finalizar
 '''))
-    
+while opcion_accion == 1 or opcion_accion == 2:
+    accion(opcion_accion)
+    opcion_accion = int(input('''¿Qué quieres hacer?
+1. Listar productos
+2. Realizar una venta
+3. Finalizar
+'''))

@@ -64,6 +64,7 @@ class Farmacia(Tienda):
             for p in self.productos:
                 if p == producto_compra:
                     vendido = p - producto_compra
+                    print("Venta exitosa")
             return vendido
     
     
@@ -96,6 +97,7 @@ class Supermercado(Tienda):
         for p in self.productos:
             if p == producto_compra:
                 vendido = p - producto_compra
+                print("Venta exitosa")
         return vendido
                 
                 
@@ -124,6 +126,8 @@ class Restaurante(Tienda):
         producto_compra = Producto(nombre_producto,0) #Se crea instancia para comparacion
         if producto_compra not in self.productos:
            print("No se encuentra producto en el menú")
+        else:
+            print("Venta exitosa")
             
 if __name__ == "__main__":
 
